@@ -1,0 +1,23 @@
+# Version information
+scyllaImage:
+  repository: scylladb/scylla
+  tag: 4.5.1
+agentImage:
+  repository: scylladb/scylla-manager-agent
+  tag: 2.5.2
+
+# Cluster information
+developerMode: false
+datacenter: us-east-1
+racks:
+- name: us-east-1b
+  members: 2
+  storage:
+    capacity: 5Gi
+  resources:
+    limits:
+      cpu: 1
+      memory: 1Gi
+    requests:
+      cpu: 1
+      memory: 1Gi
