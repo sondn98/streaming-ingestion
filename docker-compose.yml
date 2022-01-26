@@ -3,6 +3,7 @@ services:
 
   zookeeper:
     image: debezium/zookeeper:1.0
+    user: root
     ports:
     - "2181:2181" # client connections
     - "2888:2888" # peers connections
@@ -11,20 +12,9 @@ services:
     - ${LOCAL_RUN_DIR}/zookeeper_data:/zookeeper/data
     - ${LOCAL_RUN_DIR}/zookeeper_txns:/zookeeper/txns
 
-  # kafka:
-  #   image: docker.io/bitnami/kafka:3
-  #   ports:
-  #     - "9092:9092"
-  #   volumes:
-  #     - ${LOCAL_RUN_DIR}/kafka_data:/bitnami
-  #   environment:
-  #     - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-  #     - ALLOW_PLAINTEXT_LISTENER=yes      
-  #     - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
-  #   depends_on:
-  #     - zookeeper
   kafka:
     image: debezium/kafka:1.0
+    user: root
     environment:
       ZOOKEEPER_CONNECT: zookeeper
     depends_on:
@@ -36,6 +26,7 @@ services:
 
   schema-registry:
     image: confluentinc/cp-schema-registry
+    user: root
     ports:
         - "8181:8181"
         - "8081:8081"
@@ -49,6 +40,7 @@ services:
 
   debezium:
     image: debezium/connect:1.4
+    user: root
     environment:
       BOOTSTRAP_SERVERS: kafka:9092
       GROUP_ID: 1
@@ -64,6 +56,7 @@ services:
 
   akhq:
     image: tchiotludo/akhq
+    user: root
     ports:
     - "8080:8080"
     environment:
@@ -83,6 +76,7 @@ services:
 
   mysql:
     image: mysql
+    user: root
     command: --default-authentication-plugin=mysql_native_password
     volumes:                                                                    
     - ${LOCAL_RUN_DIR}/mysql_data:/var/lib/mysql
@@ -90,19 +84,10 @@ services:
     - 3306:3306
     environment:
     - MYSQL_ROOT_PASSWORD=root
-    
-  
-  postgresql:
-    image: debezium/example-postgres:1.4
-    ports:
-        - 5432:5432
-    environment:
-        - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=postgres
-
 
   cassandra:
     image: docker.io/bitnami/cassandra:4.0
+    user: root
     ports:
       - '7000:7000'
       - '9042:9042'
@@ -114,6 +99,7 @@ services:
 
   scylladb:
     image: scylladb/scylla
+    user: root
     ports:
-            - '9043:9042'
-    
+      - '9043:9042'
+      - '10000:10000'
