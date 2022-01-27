@@ -1,89 +1,89 @@
 version: "3.8"
 services:
 
-  # zookeeper:
-  #   image: debezium/zookeeper:1.0
-  #   user: root
-  #   ports:
-  #   - "2181:2181" # client connections
-  #   - "2888:2888" # peers connections
-  #   - "3888:3888" # leader election
-  #   volumes:
-  #   - ${LOCAL_RUN_DIR}/zookeeper_data:/zookeeper/data
-  #   - ${LOCAL_RUN_DIR}/zookeeper_txns:/zookeeper/txns
+  zookeeper:
+    image: debezium/zookeeper:1.0
+    user: root
+    ports:
+    - "2181:2181" # client connections
+    - "2888:2888" # peers connections
+    - "3888:3888" # leader election
+    volumes:
+    - ${LOCAL_RUN_DIR}/zookeeper_data:/zookeeper/data
+    - ${LOCAL_RUN_DIR}/zookeeper_txns:/zookeeper/txns
 
-  # kafka:
-  #   image: debezium/kafka:1.0
-  #   user: root
-  #   environment:
-  #     ZOOKEEPER_CONNECT: zookeeper
-  #   depends_on:
-  #   - zookeeper
-  #   ports:
-  #   - "9092:9092"
-  #   volumes:
-  #   - ${LOCAL_RUN_DIR}/kafka_data_official:/kafka/data
+  kafka:
+    image: debezium/kafka:1.0
+    user: root
+    environment:
+      ZOOKEEPER_CONNECT: zookeeper
+    depends_on:
+    - zookeeper
+    ports:
+    - "9092:9092"
+    volumes:
+    - ${LOCAL_RUN_DIR}/kafka_data_official:/kafka/data
 
-  # schema-registry:
-  #   image: confluentinc/cp-schema-registry
-  #   user: root
-  #   ports:
-  #       - "8181:8181"
-  #       - "8081:8081"
-  #   environment:
-  #       - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2181
-  #       - SCHEMA_REGISTRY_HOST_NAME=schema-registry
-  #       - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=kafka:9092
-  #       - SCHEMA_REGISTRY_LISTENERS=http://schema-registry:8081
-  #   links:
-  #       - zookeeper
+  schema-registry:
+    image: confluentinc/cp-schema-registry
+    user: root
+    ports:
+        - "8181:8181"
+        - "8081:8081"
+    environment:
+        - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2181
+        - SCHEMA_REGISTRY_HOST_NAME=schema-registry
+        - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=kafka:9092
+        - SCHEMA_REGISTRY_LISTENERS=http://schema-registry:8081
+    links:
+        - zookeeper
 
-  # debezium:
-  #   image: debezium/connect:1.4
-  #   user: root
-  #   environment:
-  #     BOOTSTRAP_SERVERS: kafka:9092
-  #     GROUP_ID: 1
-  #     CONFIG_STORAGE_TOPIC: debezium.configs
-  #     OFFSET_STORAGE_TOPIC: debezium.offsets
-  #     STATUS_STORAGE_TOPIC: debezium.statuses
-  #     CONNECT_PRODUCER_COMPRESSION_TYPE: lz4
-  #   depends_on:
-  #   - kafka
-  #   - mysql
-  #   ports:
-  #   - "8083:8083"
+  debezium:
+    image: debezium/connect:1.4
+    user: root
+    environment:
+      BOOTSTRAP_SERVERS: kafka:9092
+      GROUP_ID: 1
+      CONFIG_STORAGE_TOPIC: debezium.configs
+      OFFSET_STORAGE_TOPIC: debezium.offsets
+      STATUS_STORAGE_TOPIC: debezium.statuses
+      CONNECT_PRODUCER_COMPRESSION_TYPE: lz4
+    depends_on:
+    - kafka
+    - mysql
+    ports:
+    - "8083:8083"
 
-  # akhq:
-  #   image: tchiotludo/akhq
-  #   user: root
-  #   ports:
-  #   - "8080:8080"
-  #   environment:
-  #     AKHQ_CONFIGURATION: |
-  #       akhq:
-  #         connections:
-  #           ingestion:
-  #             properties:
-  #               bootstrap.servers: "kafka:9092"
-  #             connect:
-  #               - name: "connect"
-  #                 url: "http://debezium:8083"
-  #             schema-registry:
-  #               url: "http://schema-registry:8081"
-  #   links:
-  #     - kafka
+  akhq:
+    image: tchiotludo/akhq
+    user: root
+    ports:
+    - "8080:8080"
+    environment:
+      AKHQ_CONFIGURATION: |
+        akhq:
+          connections:
+            ingestion:
+              properties:
+                bootstrap.servers: "kafka:9092"
+              connect:
+                - name: "connect"
+                  url: "http://debezium:8083"
+              schema-registry:
+                url: "http://schema-registry:8081"
+    links:
+      - kafka
 
-  # mysql:
-  #   image: mysql
-  #   user: root
-  #   command: --default-authentication-plugin=mysql_native_password
-  #   volumes:                                                                    
-  #   - ${LOCAL_RUN_DIR}/mysql_data:/var/lib/mysql
-  #   ports:
-  #   - 3306:3306
-  #   environment:
-  #   - MYSQL_ROOT_PASSWORD=root
+  mysql:
+    image: mysql
+    user: root
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:                                                                    
+    - ${LOCAL_RUN_DIR}/mysql_data:/var/lib/mysql
+    ports:
+    - 3306:3306
+    environment:
+    - MYSQL_ROOT_PASSWORD=root
 
   cassandra:
     image: docker.io/bitnami/cassandra:4.0
@@ -101,6 +101,5 @@ services:
     image: scylladb/scylla
     user: root
     ports:
-      - '9043:9042'monitormonitor
-      
+      - '9043:9042'
       - '10000:10000'
