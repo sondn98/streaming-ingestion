@@ -1,10 +1,10 @@
 # Keyspace Name
-keyspace: stresscql1
+keyspace: stresscql2
 
 # The CQL for creating a keyspace (optional if it already exists)
 # Would almost always be network topology unless running something locall
 keyspace_definition: |
-  CREATE KEYSPACE stresscql1 WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+  CREATE KEYSPACE stresscql2 WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
 # Table name
 table: blogposts
