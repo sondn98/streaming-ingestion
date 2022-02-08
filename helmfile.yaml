@@ -1,0 +1,31 @@
+repositories:
+- name: scylladb
+  url: https://storage.googleapis.com/scylla-operator-charts/stable
+- name: cassandra
+  url: https://charts.bitnami.com/bitnami
+
+releases:
+#   # Cassandra
+# - name: cassandra
+#   namespace: cassandra
+#   chart: bitnami/cassandra
+#   version: 9.0.2
+#   values:
+#   - ./deploy/cassandra/cassandra.yaml
+
+  # Scylladb
+- name: scylla-operator
+  namespace: scylla-operator
+  chart: scylla/scylla-operator
+  values:
+  - ./deploy/scylla/operator.yaml
+- name: scylla-manager
+  namespace: scylla-manager
+  chart: scylla/scylla-manager
+  values:
+  - ./deploy/scylla/manager.yaml
+- name: scylla
+  namespace: scylla
+  chart: scylla/scylla
+  values:
+  - ./deploy/scylla/scylla.yaml

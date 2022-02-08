@@ -1,0 +1,327 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    prometheus.io/port: "9180"
+    prometheus.io/scrape: "true"
+  creationTimestamp: "2022-02-08T11:43:07Z"
+  generateName: scylla-us-east-1-us-east-1a-
+  labels:
+    app: scylla
+    app.kubernetes.io/managed-by: scylla-operator
+    app.kubernetes.io/name: scylla
+    controller-revision-hash: scylla-us-east-1-us-east-1a-ccbc888f4
+    scylla/cluster: scylla
+    scylla/datacenter: us-east-1
+    scylla/rack: us-east-1a
+    scylla/scylla-version: 4.5.1
+    statefulset.kubernetes.io/pod-name: scylla-us-east-1-us-east-1a-0
+  name: scylla-us-east-1-us-east-1a-0
+  namespace: scylla
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: scylla-us-east-1-us-east-1a
+    uid: 1ba2dae1-6485-46b0-894b-763c38fed90d
+  resourceVersion: "53818793"
+  uid: e6f9b9c5-ee6f-4ad3-b372-a9b18ad28ab8
+spec:
+  affinity: {}
+  containers:
+  - command:
+    - /mnt/shared/scylla-operator
+    - sidecar
+    - --service-name=$(SERVICE_NAME)
+    - --cpu-count=$(CPU_COUNT)
+    - --loglevel=2
+    env:
+    - name: SERVICE_NAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.name
+    - name: CPU_COUNT
+      valueFrom:
+        resourceFieldRef:
+          containerName: scylla
+          divisor: "1"
+          resource: limits.cpu
+    image: scylladb/scylla:4.5.1
+    imagePullPolicy: IfNotPresent
+    lifecycle:
+      preStop:
+        exec:
+          command:
+          - /bin/sh
+          - -c
+          - PID=$(pgrep -x scylla);supervisorctl stop scylla; while kill -0 $PID;
+            do sleep 1; done;
+    livenessProbe:
+      failureThreshold: 12
+      httpGet:
+        path: /healthz
+        port: 8080
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
+    name: scylla
+    ports:
+    - containerPort: 7000
+      name: intra-node
+      protocol: TCP
+    - containerPort: 7001
+      name: tls-intra-node
+      protocol: TCP
+    - containerPort: 7199
+      name: jmx
+      protocol: TCP
+    - containerPort: 9180
+      name: prometheus
+      protocol: TCP
+    - containerPort: 9042
+      name: cql
+      protocol: TCP
+    - containerPort: 9142
+      name: cql-ssl
+      protocol: TCP
+    - containerPort: 9160
+      name: thrift
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 1
+      httpGet:
+        path: /readyz
+        port: 8080
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    resources:
+      limits:
+        cpu: "1"
+        memory: 4Gi
+      requests:
+        cpu: "1"
+        memory: 4Gi
+    securityContext:
+      capabilities:
+        add:
+        - SYS_NICE
+      runAsGroup: 0
+      runAsUser: 0
+    startupProbe:
+      failureThreshold: 40
+      httpGet:
+        path: /healthz
+        port: 8080
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 30
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/lib/scylla
+      name: data
+    - mountPath: /mnt/shared
+      name: shared
+      readOnly: true
+    - mountPath: /mnt/scylla-config
+      name: scylla-config-volume
+      readOnly: true
+    - mountPath: /mnt/scylla-client-config
+      name: scylla-client-config-volume
+      readOnly: true
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-drsdk
+      readOnly: true
+  - args:
+    - -c
+    - /etc/scylla-manager-agent/scylla-manager-agent.yaml
+    - -c
+    - /mnt/scylla-agent-config/scylla-manager-agent.yaml
+    - -c
+    - /mnt/scylla-agent-config/auth-token.yaml
+    image: scylladb/scylla-manager-agent:2.5.2
+    imagePullPolicy: IfNotPresent
+    name: scylla-manager-agent
+    ports:
+    - containerPort: 10001
+      name: agent-rest-api
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 50m
+        memory: 10M
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/lib/scylla
+      name: data
+    - mountPath: /mnt/scylla-agent-config/scylla-manager-agent.yaml
+      name: scylla-agent-config-volume
+      readOnly: true
+      subPath: scylla-manager-agent.yaml
+    - mountPath: /mnt/scylla-agent-config/auth-token.yaml
+      name: scylla-agent-auth-token-volume
+      readOnly: true
+      subPath: auth-token.yaml
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-drsdk
+      readOnly: true
+  dnsPolicy: ClusterFirstWithHostNet
+  enableServiceLinks: true
+  hostname: scylla-us-east-1-us-east-1a-0
+  initContainers:
+  - command:
+    - /bin/sh
+    - -c
+    - cp -a /usr/bin/scylla-operator /mnt/shared
+    image: scylladb/scylla-operator:1.7.1
+    imagePullPolicy: IfNotPresent
+    name: sidecar-injection
+    resources:
+      limits:
+        cpu: 10m
+        memory: 50Mi
+      requests:
+        cpu: 10m
+        memory: 50Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /mnt/shared
+      name: shared
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-drsdk
+      readOnly: true
+  nodeName: gke-develop-default-56bcab35-uxsi
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    runAsGroup: 0
+    runAsUser: 0
+  serviceAccount: scylla-member
+  serviceAccountName: scylla-member
+  subdomain: scylla-client
+  terminationGracePeriodSeconds: 900
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: data
+    persistentVolumeClaim:
+      claimName: data-scylla-us-east-1-us-east-1a-0
+  - emptyDir: {}
+    name: shared
+  - configMap:
+      defaultMode: 420
+      name: scylla-config
+      optional: true
+    name: scylla-config-volume
+  - name: scylla-agent-config-volume
+    secret:
+      defaultMode: 420
+      optional: true
+      secretName: scylla-agent-config
+  - name: scylla-client-config-volume
+    secret:
+      defaultMode: 420
+      optional: true
+      secretName: scylla-client-config-secret
+  - name: scylla-agent-auth-token-volume
+    secret:
+      defaultMode: 420
+      secretName: scylla-auth-token
+  - name: kube-api-access-drsdk
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-02-08T11:43:30Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-02-08T11:46:16Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-02-08T11:46:16Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-02-08T11:43:07Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://2a092b6ab0aec0517bb05ee1cb97a597117d39b7bc227121542fc1e09cd6b4c2
+    image: docker.io/scylladb/scylla:4.5.1
+    imageID: docker.io/scylladb/scylla@sha256:5db5e7be3c13ea2db3a064f0d0523e9aff13e56c2915e1fa2cebf6d468ff1189
+    lastState: {}
+    name: scylla
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-02-08T11:43:30Z"
+  - containerID: containerd://a1813397481908f49f050b79776edbf57040da92b31f72bf6c21de44767ee4dd
+    image: docker.io/scylladb/scylla-manager-agent:2.5.2
+    imageID: docker.io/scylladb/scylla-manager-agent@sha256:e571a2f65bee358e56e417e4f9ab665f5e1ee64b50fbfdfad019044a4ada9ff0
+    lastState: {}
+    name: scylla-manager-agent
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-02-08T11:43:30Z"
+  hostIP: 10.184.15.210
+  initContainerStatuses:
+  - containerID: containerd://b99dacc4c20dbfa0b76fb7cdfdf9f1b49dad5eb915d43efda99d9dc63fc37156
+    image: docker.io/scylladb/scylla-operator:1.7.1
+    imageID: docker.io/scylladb/scylla-operator@sha256:3605eafed08e74011f29bf20c16fa2ae80cedb17ca6eda4ced805677e7fb28a9
+    lastState: {}
+    name: sidecar-injection
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://b99dacc4c20dbfa0b76fb7cdfdf9f1b49dad5eb915d43efda99d9dc63fc37156
+        exitCode: 0
+        finishedAt: "2022-02-08T11:43:29Z"
+        reason: Completed
+        startedAt: "2022-02-08T11:43:24Z"
+  phase: Running
+  podIP: 10.40.1.7
+  podIPs:
+  - ip: 10.40.1.7
+  qosClass: Burstable
+  startTime: "2022-02-08T11:43:07Z"

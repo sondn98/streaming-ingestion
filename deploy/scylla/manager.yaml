@@ -1,0 +1,41 @@
+image:
+  repository: scylladb
+
+controllerImage:
+  repository: scylladb
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 256Mi
+  requests:
+    cpu: 200m
+    memory: 32Mi
+
+controllerResources:
+  limits:
+    cpu: 200m
+    memory: 128Mi
+  requests:
+    cpu: 200m
+    memory: 32Mi
+
+scylla:
+  developerMode: true
+  scyllaImage:
+    tag: 4.3.0
+  agentImage:
+    tag: 2.2.1
+  datacenter: manager-dc
+  racks:
+  - name: manager-rack
+    members: 1
+    storage:
+      capacity: 5Gi
+    resources:
+      limits:
+        cpu: 500m
+        memory: 200Mi
+      requests:
+        cpu: 500m
+        memory: 200Mi

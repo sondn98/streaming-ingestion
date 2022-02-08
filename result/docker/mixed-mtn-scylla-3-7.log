@@ -1,0 +1,885 @@
+******************** Stress Settings ********************
+Command:
+  Type: mixed
+  Count: -1
+  No Warmup: false
+  Consistency Level: LOCAL_ONE
+  Target Uncertainty: 0.020
+  Minimum Uncertainty Measurements: 30
+  Maximum Uncertainty Measurements: 200
+  Key Size (bytes): 10
+  Counter Increment Distibution: add=fixed(1)
+  Command Ratios: {READ=7.0, WRITE=3.0}
+  Command Clustering Distribution: clustering=GAUSSIAN(1..10)
+Rate:
+  Auto: true
+  Min Threads: 4
+  Max Threads: 1000
+Population:
+  Distribution: Gaussian:  min=1,max=1000000,mean=500000.500000,stdev=166666.500000
+  Order: ARBITRARY
+  Wrap: false
+Insert:
+  Revisits: Uniform:  min=1,max=1000000
+  Visits: Fixed:  key=1
+  Row Population Ratio: Ratio: divisor=1.000000;delegate=Fixed:  key=1
+  Batch Type: not batching
+Columns:
+  Max Columns Per Key: 5
+  Column Names: [C0, C1, C2, C3, C4]
+  Comparator: AsciiType
+  Timestamp: null
+  Variable Column Count: false
+  Slice: false
+  Size Distribution: Fixed:  key=34
+  Count Distribution: Fixed:  key=5
+Errors:
+  Ignore: false
+  Tries: 10
+Log:
+  No Summary: false
+  No Settings: false
+  File: /home/sondn/Workspace/Trial_and_error/streaming-ingestion/result/mixed-mtn-scylla-3-7.log
+  Interval Millis: 1000
+  Level: NORMAL
+Mode:
+  API: JAVA_DRIVER_NATIVE
+  Connection Style: CQL_PREPARED
+  CQL Version: CQL3
+  Protocol Version: V4
+  Username: null
+  Password: null
+  Auth Provide Class: null
+  Max Pending Per Connection: 128
+  Connections Per Host: 8
+  Compression: NONE
+Node:
+  Nodes: [localhost]
+  Is White List: false
+  Datacenter: null
+Schema:
+  Keyspace: keyspace1
+  Replication Strategy: org.apache.cassandra.locator.SimpleStrategy
+  Replication Strategy Pptions: {replication_factor=1}
+  Table Compression: null
+  Table Compaction Strategy: null
+  Table Compaction Strategy Options: {}
+Transport:
+  factory=org.apache.cassandra.thrift.TFramedTransportFactory; truststore=null; truststore-password=null; keystore=null; keystore-password=null; ssl-protocol=TLS; ssl-alg=SunX509; store-type=JKS; ssl-ciphers=TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA; 
+Port:
+  Native Port: 9042
+  Thrift Port: 9160
+  JMX Port: 7199
+Send To Daemon:
+  *not set*
+Graph:
+  File: null
+  Revision: unknown
+  Title: null
+  Operation: MIXED
+TokenRange:
+  Wrap: false
+  Split Factor: 1
+
+Sleeping 2s...
+Warming up READ with 50000 iterations...
+java.io.IOException: Operation x0 on key(s) [50504c4e313836333530]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4b3839394e31504b3131]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [374c32324e3538324b30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4e34304b37354c383130]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [374d34384f394d4c3130]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4e3538354b4d38343730]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4e344e32344b34303330]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [334f3534333750324e30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4d394e334b3338504e30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [343935374c4e38353230]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [383550384e4c39393331]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4d4c4d34374c4b343131]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3050393033384e4e4b30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4d354f374c30364b3830]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3938374c333639383531]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4b30304b4f39374b3331]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4c38364e4f334c313331]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4c38303337384c383030]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [34334d39354c30314d30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [33304d4c313336313030]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4d3033354d4d4c334b30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [324e3737393933333530]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4f3633394e3539343631]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [364c4f4c353332503930]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [34503032395039323431]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3135343135334c4b3631]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4d4e3450333937364d30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [39394f324e3132503230]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [304e384b343937394c30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [33345038394f36303630]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4c4c32504e374c323330]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [394f4b3550304e4f3230]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [30384f304e364c4c3630]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4d304d4f334f314c3631]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4f4b4b35384b36333331]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4f31354e335030363230]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4e4c3950344c304c3930]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [30374d504f3735313830]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4b303932324f4f4f3030]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [343639394c3132373430]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [33395036364c37303030]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4d4c374f365030333730]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [363230504b4c4b393431]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4c3736304c4e504c3031]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3932504d4c3730313330]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [334d394c393833343930]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [334d3831365038323930]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [354e394d334b35384f30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [38355039314e4c4b3830]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4c384f3935314e4b3230]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [384f3930334b31303730]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3239503931504c344c30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4b344f30324f35363431]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4d4c4c4b31354c363230]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [39343033323134353330]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [38363534323650343230]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [333739384c3736363331]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [32344f31363631363630]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4f4d374e30334e364d30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4b354f4b4c5030344e30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3339384e4d36504d4c30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [35314b4f4f31394e3131]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [344b4d383538314d3631]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4f334d4b363550373930]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4f4d304d32504c4d3331]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4b4d3131384d4b303030]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3338323033504f353530]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4b4e31503531354f3030]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [364b324c504b384e4e30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4b333333333035504f30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3531304c323530334c30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [32313537334e384e3431]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [364e5032314f33383331]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [34384d35374f39324d30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [304c3236503035343031]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4b33364e50304e4f5030]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [34344c3534314b4b3131]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4c3133334f384e4b3030]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3038393832334d333531]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3239394e4d384f323430]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4c504f50394c4b313630]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [384d3532353739374c30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3734364f33384b4e3430]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3236364c384b344d3330]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [314c4f4d4c3531393430]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4d4d3450354c32384e30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3332354f4c4f4b374c30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4c39324d504f31344d30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3432344b334c39373631]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4c373830314f50303330]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [323634314e3233374f30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [30364d39343537383331]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [343738304d5037313530]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [33304c36314c324e4c30]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [34304b323132314e3130]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [32333538343437343630]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [3637504e393432363231]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [374e39334b364c4b3031]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4e4d30304f3433375030]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
+java.io.IOException: Operation x0 on key(s) [4c324f4e4d4b344b3730]: Data returned was not validated
+
+	at org.apache.cassandra.stress.Operation.error(Operation.java:136)
+	at org.apache.cassandra.stress.Operation.timeWithRetry(Operation.java:114)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:101)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:109)
+	at org.apache.cassandra.stress.operations.predefined.CqlOperation.run(CqlOperation.java:264)
+	at org.apache.cassandra.stress.StressAction$Consumer.run(StressAction.java:472)
