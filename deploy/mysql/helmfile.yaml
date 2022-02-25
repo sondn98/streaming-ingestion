@@ -1,0 +1,8 @@
+releases:
+- name: mysql
+  namespace: mysql
+  chart: bitnami/mysql
+  version: 8.8.25
+  values:
+  - ./mysql.yaml
+  - fullnameOverride: mysql

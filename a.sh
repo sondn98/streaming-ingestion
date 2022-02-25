@@ -1,1 +1,0 @@
-./cassandra-stress mixed ratio \(write=3,read=7\) -port native=9043 -log file=/home/sondn/Workspace/Trial_and_error/streaming-ingestion/result/mixed-scylla-3-7.log

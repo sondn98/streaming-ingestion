@@ -1,20 +1,19 @@
-scyllaImage:
-  repository: scylladb/scylla
-  
-agentImage:
-  repository: scylladb/scylla-manager-agent
+datacenter: vn-hanoi-langha
 
-# racks:
-# - name: "us-east-1a"
-#   scyllaConfig: "scylla-config"
-#   scyllaAgentConfig: "scylla-agent-config"
-#   members: 3
-#   storage:
-#     capacity: 10Gi
-#   resources:
-#      limits:
-#        cpu: 1
-#        memory: 2Gi
-#      requests:
-#        cpu: 500m
-#        memory: 1Gi
+racks:
+- name: rack-1
+  scyllaConfig: scylla-config
+  scyllaAgentConfig: scylla-agent-config
+  members: 3
+  storage:
+    capacity: 10Gi
+  resources:
+    limits:
+      cpu: 1
+      memory: 4Gi
+    requests:
+      cpu: 1
+      memory: 4Gi
+
+serviceMonitor:
+  create: true

@@ -1,0 +1,79 @@
+---
+apiVersion: "v1"
+items:
+- apiVersion: "v1"
+  kind: "Service"
+  metadata:
+    labels:
+      project: "connect-mysql"
+      provider: "debezium"
+      version: "0.1-SNAPSHOT"
+      group: "io.debezium"
+    name: "connect-mysql"
+  spec:
+    ports:
+    - port: 8083
+      protocol: "TCP"
+      targetPort: 8083
+    selector:
+      project: "connect-mysql"
+      provider: "debezium"
+      group: "io.debezium"
+- apiVersion: "v1"
+  kind: "ReplicationController"
+  metadata:
+    annotations:
+      fabric8.io/git-commit: "a6d7406c96dd1845d452ce389cc9c291de68c1dd"
+      fabric8.io/git-branch: "master"
+    labels:
+      project: "connect-mysql"
+      provider: "debezium"
+      version: "0.1-SNAPSHOT"
+      group: "io.debezium"
+    name: "connect-mysql"
+  spec:
+    replicas: 1
+    selector:
+      project: "connect-mysql"
+      provider: "debezium"
+      version: "0.1-SNAPSHOT"
+      group: "io.debezium"
+    template:
+      metadata:
+        labels:
+          project: "connect-mysql"
+          provider: "debezium"
+          version: "0.1-SNAPSHOT"
+          group: "io.debezium"
+      spec:
+        containers:
+        - env:
+          - name: "OFFSET_STORAGE_TOPIC"
+            value: "my-connect-offsets"
+          - name: "HOST_NAME"
+            value: "0.0.0.0"
+          - name: "BOOTSTRAP_SERVERS"
+            value: "kafka:9092"
+          - name: "CONFIG_STORAGE_TOPIC"
+            value: "my-connect-configs"
+          - name: "KAFKA_OPTS"
+            value: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
+          - name: "GROUP_ID"
+            value: "connect-mysql"
+          - name: "KUBERNETES_NAMESPACE"
+            valueFrom:
+              fieldRef:
+                fieldPath: "metadata.namespace"
+          - name: "ADVERTISED_HOST_NAME"
+            valueFrom:
+              fieldRef:
+                fieldPath: "status.podIP"
+          image: "docker.io/debezium/connect:1.8"
+          imagePullPolicy: "IfNotPresent"
+          name: "connect-mysql"
+          ports:
+          - containerPort: 8083
+            name: "rest"
+          - containerPort: 5005
+            name: "debug"
+kind: "List"

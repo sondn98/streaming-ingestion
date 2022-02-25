@@ -1,0 +1,21 @@
+repositories:
+- name: scylla
+  url: https://scylla-operator-charts.storage.googleapis.com/stable
+- name: mysql
+  url: https://charts.bitnami.com/bitnami
+- name: kafka
+  url: https://charts.bitnami.com/bitnami
+- name: akhq
+  url: https://akhq.io/
+
+helmDefaults:
+  wait: true
+  force: true
+  verify: true
+  createNamespace: true
+  timeout: 600
+
+helmfiles:
+- path: scylla/helmfile.yaml
+- path: mysql/helmfile.yaml
+- path: kafka/helmfile.yaml

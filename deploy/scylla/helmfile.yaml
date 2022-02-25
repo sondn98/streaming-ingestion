@@ -1,0 +1,24 @@
+releases:
+- name: scylla
+  namespace: scylla
+  chart: scylla/scylla
+  version: v1.7.2
+  values:
+  - ./scylla.yaml
+  - fullnameOverride: scylla
+
+- name: scylla-operator
+  namespace: scylla-operator
+  chart: scylla/scylla-operator
+  version: v1.7.2
+  values:
+  - ./operator.yaml
+  - fullnameOverride: scylla-operator
+
+- name: scylla-manager
+  namespace: scylla-manager
+  chart: scylla/scylla-manager
+  version: v1.7.2
+  values:
+  - ./manager.yaml
+  - fullnameOverride: scylla-manager
