@@ -85,18 +85,6 @@ services:
     environment:
     - MYSQL_ROOT_PASSWORD=root
 
-  cassandra:
-    image: docker.io/bitnami/cassandra:4.0
-    user: root
-    ports:
-      - '7000:7000'
-      - '9042:9042'
-    volumes:
-      - ${LOCAL_RUN_DIR}/cassandra_data:/bitnami
-    environment:
-      - CASSANDRA_SEEDS=cassandra
-      - CASSANDRA_PASSWORD=cassandra
-
   scylladb:
     image: scylladb/scylla
     user: root

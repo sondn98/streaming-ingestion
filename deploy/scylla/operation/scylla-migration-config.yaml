@@ -1,0 +1,38 @@
+# Example configuration for migrating from Cassandra:
+source:
+  type: scylla
+  host: localhost
+  port: 9042
+  keyspace: test
+  table: my_table
+  preserveTimestamps: false
+  splitCount: 256
+  connections: 8
+  fetchSize: 1000
+
+target:
+  type: scylla
+  host: localhost
+  port: 9042
+  keyspace: test
+  table: my_table_5
+  connections: 16
+  stripTrailingZerosForDecimals: false
+
+savepoints:
+  path: ./app/savepoints
+  intervalSeconds: 300
+
+renames: []
+# - from: f4
+#   to: f4_renamed
+
+skipTokenRanges: []
+
+validation:
+  compareTimestamps: true
+  ttlToleranceMillis: 60000
+  writetimeToleranceMillis: 1000
+  failuresToFetch: 100
+  floatingPointTolerance: 0.001
+  timestampMsTolerance: 0

@@ -15,7 +15,6 @@ controllerResources:
     memory: 512Mi
 
 scylla:
-  developerMode: false
   datacenter: vn-hanoi-langha
   racks:
   - name: rack-1
@@ -31,4 +30,4 @@ scylla:
         memory: 512Mi
 
 serviceMonitor:
-  create: true
+  create: false
